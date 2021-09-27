@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+
+#
+# Generates a fastboot script from RSD provided xml in moto firmwares
+# From: https://gist.github.com/Alberto97/b470422313c80fc925b0454355717a97
+#
+
+import xml.etree.ElementTree
+from argparse import ArgumentParser
+
+blacklist = ["partition", "bootloader", "modem", "fsg", "modemst1", "modemst2", "dsp", "logo", "DDR"]
+
+parser = ArgumentParser()
+parser.add_argument("-i", "--input", default='servicefile.xml',
+                    help="Input file, picks servicefile.xml in this folder if not set")
+parser.add_argument("-m", "--mini", action='store_true',
+                    help="Outputs a minimal installation script")
+
+# Parse arguments
+args = parser.parse_args()
+
+flashing = xml.etree.ElementTree.parse(args.input).getroot()
+steps = flashing.find('steps')
+
+for step in steps:
+    operation = step.get('operation')
+    if operation == "flash":
+        filename = step.get('filename')
+        partition = step.get('partition')
+        
+        if args.mini:
+            if partition not in blacklist:
+                print("fastboot", operation, partition, filename)
+        else:
+            print("fastboot", operation, partition, filename)
+    elif operation == "erase":
+        partition = step.get('partition')
+        
+        if partition != "userdata":
+            if args.mini:
+                if partition not in blacklist:
+                    print("fastboot", operation, partition)
+            else:
+                print("fastboot", operation, partition)
