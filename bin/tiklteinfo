@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Show LTE interface info of a MikroTik router
+
+ssh admin@192.168.88.1 -t ":put [/interface lte info lte1]; quit"
