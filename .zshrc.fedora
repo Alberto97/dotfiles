@@ -1,0 +1,20 @@
+# Source fedora-zsh-config
+if [[ -e /usr/share/fedora-zsh-config/fedora-zsh-config ]]; then
+  source /usr/share/fedora-zsh-config/fedora-zsh-config
+fi
+
+# Use history substring search
+if [[ -e /usr/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]]; then
+  # Use history substring search
+  source /usr/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+  # bind UP and DOWN arrow keys to history substring search
+  zmodload zsh/terminfo
+  bindkey "$terminfo[kcuu1]" history-substring-search-up
+  bindkey "$terminfo[kcud1]" history-substring-search-down
+  bindkey '^[[A' history-substring-search-up			
+  bindkey '^[[B' history-substring-search-down
+fi
+
+#source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
