@@ -1,4 +1,4 @@
 #!/bin/bash
 
-PASS=`secret-tool lookup protocol smb server raspberrypi user pi`
+PASS=`secret-tool lookup protocol smb server raspberrypi.local user pi`
 sudo mount -t cifs -o user=pi,password=$PASS,uid=1000,gid=1000 //192.168.88.240/EXT $HOME/sharepi
