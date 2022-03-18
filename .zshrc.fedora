@@ -16,8 +16,8 @@ if [[ -e /usr/share/zsh-history-substring-search/zsh-history-substring-search.zs
 fi
 
 # Add user customizations
-if [[ -e .zshrc.local ]]; then
-  source .zshrc.local
+if [[ -e /home/$USER/.zshrc.local ]]; then
+  source /home/$USER/.zshrc.local
 fi
 
 #source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
