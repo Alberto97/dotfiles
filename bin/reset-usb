@@ -1,9 +1,0 @@
-#!/bin/bash
-
-buses=("0000:07:00.1" "0000:07:00.3" "0000:0a:00.3")
-
-for bus in "${buses[@]}"; do
-    echo "reset bus: $bus"
-    echo $bus > /sys/bus/pci/drivers/xhci_hcd/unbind
-    echo $bus > /sys/bus/pci/drivers/xhci_hcd/bind
-done
