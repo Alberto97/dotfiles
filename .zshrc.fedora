@@ -15,6 +15,13 @@ if [[ -e /usr/share/zsh-history-substring-search/zsh-history-substring-search.zs
   bindkey '^[[B' history-substring-search-down
 fi
 
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+
 # Add user customizations
 if [[ -e /home/$USER/.zshrc.local ]]; then
   source /home/$USER/.zshrc.local
