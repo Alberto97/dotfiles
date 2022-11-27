@@ -1,0 +1,4 @@
+#!/bin/bash
+
+PASS=`secret-tool lookup protocol smb server tower.local user alberto`
+sudo mount -t cifs -o user=alberto,password=$PASS,uid=1000,gid=1000 //tower.local/media $HOME/towermedia
