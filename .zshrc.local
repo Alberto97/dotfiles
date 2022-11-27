@@ -1,3 +1,3 @@
 EXT_DISK_PATH="/run/media/$USER/Crucial_500GB"
-export PATH="$PATH:$EXT_DISK_PATH/dart-sdk/bin:$EXT_DISK_PATH/Android/Sdk/platform-tools:$HOME/.pub-cache/bin"
+export PATH="$PATH:$EXT_DISK_PATH/Android/Sdk/platform-tools:$HOME/.pub-cache/bin"
 export ANDROID_HOME="$EXT_DISK_PATH/Android/Sdk"
